@@ -91,7 +91,7 @@ export default async function request (options) {
       return data;
    } catch (error) {
 
-    //   throw new CustomError(error);
+      //   throw new CustomError(error);
       throw error;
    }
 }

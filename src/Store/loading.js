@@ -1,20 +1,22 @@
+import * as types from './mutation-types';
+
 const loading = {
 
-    state:{
-        show: false
-    },
-    mutation:{
+   state:{
+      show: false
+   },
+   mutation:{
 
-        /* show loading */
-        showLoading(state){
-            state.show = true;
-        },
+      /* show loading */
+      [types.SHOW_LOADING] (state){
+         state.show = true;
+      },
 
-        /* hide loading */
-        hideLoading(state){
-            state.show = false;
-        }
-    }
-}
+      /* hide loading */
+      [types.HIDE_LOADING] (state){
+         state.show = false;
+      }
+   }
+};
 
 export default loading;

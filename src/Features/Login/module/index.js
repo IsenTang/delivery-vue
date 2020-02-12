@@ -4,9 +4,9 @@ import action from './actions';
 
 const login =  {
 
-    state,
-    mutation,
-    action
-}
+   state,
+   mutation,
+   action
+};
 
 export default login;

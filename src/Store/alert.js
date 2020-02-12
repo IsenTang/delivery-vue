@@ -1,26 +1,28 @@
 import _ from 'lodash';
 
+import * as types from './mutation-types';
+
 const alert = {
 
-    state:{
-        show: false,
-        message:'',
-        closeFunc: _.noop()
-    },
-    mutation:{
+   state:{
+      show: false,
+      message:'',
+      closeFunc: _.noop()
+   },
+   mutation:{
 
-        /* show loading */
-        showAlert(state,payload){
-            state.show = true;
-            state.message = payload.message,
-            state.closeFunc = payload.closeFunc || _.noop()
-        },
+      /* show alert */
+      [types.SHOW_ALERT] (state,payload){
+         state.show = true;
+         state.message = payload.message,
+         state.closeFunc = payload.closeFunc || _.noop();
+      },
 
-        /* hide loading */
-        hideAlert(state){
-            state.show = false;
-        }
-    }
-}
+      /* hide alert */
+      [types.HIDE_ALERT] (state){
+         state.show = false;
+      }
+   }
+};
 
 export default alert;

@@ -1,22 +1,23 @@
 import { get } from '../Common/utils';
+import * as types from './mutation-types';
 
 const cart = {
 
-    state:{
-        cart: get('cart') || []
-    },
-    mutation:{
+   state:{
+      cart: get('cart') || []
+   },
+   mutation:{
 
-        /* save cart */
-        saveCart(state,payload){
-            state.cart = payload.cart;
-        },
+      /* save cart */
+      [types.SAVE_CART] (state,payload){
+         state.cart = payload.cart;
+      },
 
-        /* clear cart */
-        clearCart(state){
-            state.cart = [];
-        }
-    }
-}
+      /* clear cart */
+      [types.CLEAR_CART] (state){
+         state.cart = [];
+      }
+   }
+};
 
 export default cart;
