@@ -1,5 +1,8 @@
 <template>
-  <div class="profile-drop-down">
+  <div
+    ref="profile-dropDown"
+    class="profile-drop-down"
+  >
     <button
       v-if="loginShow"
       class="profile-button"
@@ -47,6 +50,7 @@ export default {
       LanguageButton
    },
 
+   props:[ 'close' ],
    data:function () {
       return {
          langs:[
@@ -54,6 +58,17 @@ export default {
             { code: 'en', show: 'En',key:  uuidv4() }
          ]
       };
+   },
+   mounted (){
+
+      /* 增加listener，点击关闭 */
+      document.addEventListener('mousedown', this.handleClickOutside,true);
+   },
+
+   destroyed (){
+
+      /* 移除listener */
+      document.removeEventListener('mousedown', this.handleClickOutside,true);
    },
 
    computed:{
@@ -76,6 +91,23 @@ export default {
       ...mapState({
          user: state=>state.login.user
       })
+   },
+
+   methods:{
+
+      handleClickOutside (e){
+
+         const ref = this.$refs['profile-dropDown'];
+
+         if (ref &&
+         !ref.contains(e.target) &&
+         e.target.className !== 'profile-logo') {
+
+            this.$props['close']();
+         }
+
+      }
    }
+
 };
 </script>

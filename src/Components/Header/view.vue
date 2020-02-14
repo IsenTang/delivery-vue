@@ -16,6 +16,7 @@
         />
         <ProfileDropDown
           v-if="isShow"
+          :close="closeDropDown"
         />
         </profiledropdown>
       </div>
@@ -55,6 +56,10 @@ export default {
 
       showProfile (){
          this.$data.show = true;
+      },
+      closeDropDown (){
+
+         this.$data.show = false;
       }
    }
 };
