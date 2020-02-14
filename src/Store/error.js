@@ -8,7 +8,7 @@ const error = {
       message: '',
       closeFunc: _.noop()
    },
-   mutation:{
+   mutations:{
 
       /* show error */
       [types.SHOW_ERROR] (state,payload){

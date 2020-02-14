@@ -6,7 +6,7 @@ const cart = {
    state:{
       cart: get('cart') || []
    },
-   mutation:{
+   mutations:{
 
       /* save cart */
       [types.SAVE_CART] (state,payload){

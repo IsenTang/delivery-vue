@@ -1,4 +1,9 @@
-module.exports = {
+import { get } from '../../../Common/utils';
 
-   show:false
+const state = {
+
+   show:false,
+   user:get('user')
 };
+
+export default state;

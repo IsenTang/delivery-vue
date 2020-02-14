@@ -11,19 +11,19 @@
         class="loading-image"
       />
     </div>
-  </div> 
+  </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 import './style.scss';
 
 export default {
-  computed:{
+   computed:{
 
-    ...mapState({
-      show: state=>state.loading.show
-    })
-  }
-}
+      ...mapState({
+         show: state=>state.loading.show
+      })
+   }
+};
 </script>

@@ -1,5 +1,4 @@
 import _ from 'lodash';
-// import intl from 'react-intl-universal';
 
 /* localstorage get */
 export function get (data){

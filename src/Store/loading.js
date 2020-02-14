@@ -5,7 +5,7 @@ const loading = {
    state:{
       show: false
    },
-   mutation:{
+   mutations:{
 
       /* show loading */
       [types.SHOW_LOADING] (state){

@@ -9,12 +9,12 @@ const alert = {
       message:'',
       closeFunc: _.noop()
    },
-   mutation:{
+   mutations:{
 
       /* show alert */
       [types.SHOW_ALERT] (state,payload){
          state.show = true;
-         state.message = payload.message,
+         state.message = payload.message;
          state.closeFunc = payload.closeFunc || _.noop();
       },
 
