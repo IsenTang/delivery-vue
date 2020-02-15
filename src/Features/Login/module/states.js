@@ -3,7 +3,7 @@ import { get } from '../../../Common/utils';
 const state = {
 
    show:false,
-   user:get('user')
+   user:get('user') || {}
 };
 
 export default state;

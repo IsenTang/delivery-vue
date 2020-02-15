@@ -3,7 +3,6 @@ import * as types from './mutation-types';
 import i18n from '../i18n';
 
 const language = {
-   namespaced: true,
    state:{
       language: get('language') || 'zh'
    },
@@ -18,12 +17,11 @@ const language = {
 
       changeLanguage ({ commit },{ language }){
 
-         // this._vm.$modal.show('error');
-         commit(types.SHOW_LOADING,null,{ root: true });
+         commit(types.SHOW_LOADING);
          commit(types.CHANGE_LANGUAGE,{ language });
          i18n.locale = language;
 
-         commit(types.HIDE_LOADING,null,{ root: true });
+         commit(types.HIDE_LOADING);
 
          set('language',language);
       }

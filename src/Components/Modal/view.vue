@@ -40,7 +40,7 @@ export default {
       closeModal (){
 
          this.$data.closeFunc();
-         this.$modal.hide('error');
+         this.$modal.hide('modal');
       }
    }
 };

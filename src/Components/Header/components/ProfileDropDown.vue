@@ -50,7 +50,12 @@ export default {
       LanguageButton
    },
 
-   props:[ 'close' ],
+   props:{
+      close: {
+         type: Function,
+         required:true
+      }
+   },
    data:function () {
       return {
          langs:[
@@ -58,17 +63,6 @@ export default {
             { code: 'en', show: 'En',key:  uuidv4() }
          ]
       };
-   },
-   mounted (){
-
-      /* 增加listener，点击关闭 */
-      document.addEventListener('mousedown', this.handleClickOutside,true);
-   },
-
-   destroyed (){
-
-      /* 移除listener */
-      document.removeEventListener('mousedown', this.handleClickOutside,true);
    },
 
    computed:{
@@ -93,6 +87,18 @@ export default {
       })
    },
 
+   mounted (){
+
+      /* 增加listener，点击关闭 */
+      document.addEventListener('mousedown', this.handleClickOutside,true);
+   },
+
+   destroyed (){
+
+      /* 移除listener */
+      document.removeEventListener('mousedown', this.handleClickOutside,true);
+   },
+
    methods:{
 
       handleClickOutside (e){
@@ -107,7 +113,7 @@ export default {
          }
 
       }
-   }
+   },
 
 };
 </script>

@@ -2,7 +2,7 @@
   <button
     :id="chooseId"
     type="button"
-    @click="changeLanguage(lang.code)"
+    @click="changeLang(lang.code)"
   >
     {{ lang.show }}
   </button>
@@ -13,7 +13,12 @@ import { mapActions,mapState } from 'vuex';
 
 export default {
    name:'LanguageButton',
-   props:[ 'lang' ],
+   props:{
+      lang:{
+         type:Object,
+         required:true
+      }
+   },
    computed:{
       ...mapState({
          language: state=>state.language.language
@@ -34,11 +39,11 @@ export default {
    },
    methods:{
       ...mapActions([
-         'language/changeLanguage'
+         'changeLanguage'
       ]),
-      changeLanguage: function (language){
+      changeLang: function (language){
 
-         this['language/changeLanguage']({ language });
+         this.changeLanguage({ language });
       }
    }
 };

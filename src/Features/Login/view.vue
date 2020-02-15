@@ -46,7 +46,7 @@
 <script>
 /* style */
 import './style.scss';
-import { mapState } from 'vuex';
+import { mapState,mapActions } from 'vuex';
 
 export default {
    name: 'Login',
@@ -63,21 +63,30 @@ export default {
       })
    },
    methods:{
+      ...mapActions([
+         'login'
+      ]),
       handleLogin (){
 
+         const username = this.$data.username;
+
+         const password = this.$data.password;
+
          /* 检测数据 */
-         if(!this.checkName(this.$data.username)){
+         if(!this.checkName(username)){
 
             this.$modal.show('modal',{ message: this.$t('login.error.name') });
             return;
          }
 
-         if(!this.checkPassword(this.$data.password)){
+         if(!this.checkPassword(password)){
 
             this.$modal.show('modal',{ message: this.$t('login.error.password') });
             this.$data.password = '';
             return;
          }
+
+         this['login']({ username,password });
 
       },
 
