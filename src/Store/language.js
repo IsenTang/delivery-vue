@@ -18,6 +18,7 @@ const language = {
 
       changeLanguage ({ commit },{ language }){
 
+         // this._vm.$modal.show('error');
          commit(types.SHOW_LOADING,null,{ root: true });
          commit(types.CHANGE_LANGUAGE,{ language });
          i18n.locale = language;
