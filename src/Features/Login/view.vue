@@ -35,11 +35,69 @@
         >
           {{ $t('login.login') }}
         </button>
-        <button class="normal-btn sign-up-btn">
+        <button
+          class="normal-btn sign-up-btn"
+          @click.prevent="showSignUp"
+        >
           {{ $t('login.signUp') }}
         </button>
       </div>
     </div>
+
+    <!-- sign up modal -->
+    <modal
+      name="signUp"
+      height="auto"
+    >
+      <div
+        class="sign-up-modal containerCol vertical space-between"
+      >
+        <div class="sign-up-type-in">
+          <div class="input-box sign-up-type-input">
+            <div class="input-title">
+              {{ $t('login.username') }}
+            </div>
+            <input
+              v-model="signUpName"
+              class="input"
+              autoFocus
+            ></input>
+          </div>
+          <div
+            class="input-box sign-up-type-input"
+          >
+            <div class="input-title">
+              {{ $t('login.password') }}
+            </div>
+            <input
+              v-model="signUpPassword"
+              class="input"
+              type="password"
+            ></input>
+          </div>
+          <div
+            class="input-box sign-up-type-input"
+          >
+            <div class="input-title">
+              {{ $t('login.confirmPassword') }}
+            </div>
+            <input
+              v-model="comfirmSignUpPassword"
+              class="input"
+              type="password"
+            ></input>
+          </div>
+        </div>
+        <div class="containerCol vertical space-between sign-up-btn-box">
+          <button
+            class="normal-btn login-btn"
+            @click.prevent="handleSignUp"
+          >
+            {{ $t('login.signUp') }}
+          </button>
+        </div>
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -53,7 +111,10 @@ export default {
    data:function () {
       return {
          username:'',
-         password:''
+         password:'',
+         signUpName:'',
+         signUpPassword:'',
+         comfirmSignUpPassword:''
       };
    },
    computed:{
@@ -64,7 +125,8 @@ export default {
    },
    methods:{
       ...mapActions([
-         'login'
+         'login',
+         'signUp'
       ]),
       handleLogin (){
 
@@ -86,8 +148,50 @@ export default {
             return;
          }
 
+         /* 登录 */
          this['login']({ username,password });
 
+      },
+
+      /* 显示注册modal */
+      showSignUp (){
+         this.$modal.show('signUp');
+      },
+
+      /* 注册 */
+      handleSignUp (){
+
+         const username = this.$data.signUpName;
+
+         const password = this.$data.signUpPassword;
+
+         const confirmPassword = this.$data.comfirmSignUpPassword;
+
+         /* 检测数据 */
+         if(!this.checkName(username)){
+
+            this.$modal.show('modal',{ message: this.$t('login.error.name') });
+            return;
+         }
+
+         if(!this.checkPassword(password)){
+
+            this.$modal.show('modal',{ message: this.$t('login.error.password') });
+            this.$data.signUpPassword = '';
+            this.$data.comfirmSignUpPassword = '';
+            return;
+         }
+
+         if(password !== confirmPassword){
+
+            this.$modal.show('modal',{ message: this.$t('login.error.comfirmPassword') });
+            this.$data.signUpPassword = '';
+            this.$data.comfirmSignUpPassword = '';
+            return;
+         }
+
+         /* 注册 */
+         this.signUp({ username,password });
       },
 
       /* 检测用户名 */
