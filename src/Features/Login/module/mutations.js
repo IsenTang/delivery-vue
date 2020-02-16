@@ -2,7 +2,7 @@ import * as types from '../../../Store/mutation-types';
 
 const mutations = {
 
-   /* 修改语言 */
+   /* 保存用户 */
    [types.SAVE_USER] (state,payload){
       state.user = payload.user;
    },

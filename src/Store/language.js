@@ -4,7 +4,7 @@ import i18n from '../i18n';
 
 const language = {
    state:{
-      language: get('language') || 'zh'
+      language: get('language') || 'zh-CN'
    },
    mutations:{
 

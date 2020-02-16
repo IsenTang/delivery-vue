@@ -19,7 +19,7 @@ function loadLocaleMessages () {
 }
 
 export default new VueI18n({
-   locale: get('language') || 'zh',
-   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'zh',
+   locale: get('language') || 'zh-CN',
+   fallbackLocale:'zh-CN',
    messages: loadLocaleMessages()
 });

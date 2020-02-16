@@ -59,8 +59,8 @@ export default {
    data:function () {
       return {
          langs:[
-            { code: 'zh', show: '中',key: uuidv4() },
-            { code: 'en', show: 'En',key:  uuidv4() }
+            { code: 'zh-CN', show: '中',key: uuidv4() },
+            { code: 'en-US', show: 'En',key:  uuidv4() }
          ]
       };
    },

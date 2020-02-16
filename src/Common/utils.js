@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import i18n from '../i18n';
 
 /* localstorage get */
 export function get (data){
@@ -18,31 +19,30 @@ export function set (name, data){
 }
 
 /* 获取对应语言信息 */
-export function getLanguageInfo (item,property){
+export function getLanguageInfo (item,property,language){
 
-   const language = get('language');
    return _.get(item,`${property}[${language}]`);
 }
 
 /**
  * Translate filter
  */
-// export function lang (name, params, fallback) {
-//    const localeOptions = intl.getInitOptions();
-//    const currentLocale = localeOptions.currentLocale || 'en-US';
+export function lang (name, params, fallback) {
 
-//    /* Return '' if no name */
-//    if (_.isEmpty(name)) {
-//       return '';
-//    }
+   const currentLocale = i18n.locale || 'zh-CN';
 
-//    /* Langs pre-defined objects */
-//    if (_.isObject(name)) {
-//       return _.get(name, currentLocale) || _.get(name, 'zh-CN') || name;
-//    }
+   /* Return '' if no name */
+   if (_.isEmpty(name)) {
+      return '';
+   }
 
-//    return intl.get(name, params) || fallback;
-// }
+   /* Langs pre-defined objects */
+   if (_.isObject(name)) {
+      return _.get(name, currentLocale) || _.get(name, 'zh-CN') || name;
+   }
+
+   return i18n.t(name, params) || fallback;
+}
 
 /**
   * get current lang

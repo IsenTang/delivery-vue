@@ -8,6 +8,7 @@ import loading from './loading';
 
 /* modules */
 import login from '../Features/Login/module';
+import restaurant from '../Features/Restaurant/module';
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ export default new Vuex.Store({
       cart,
       language,
       loading,
-      login
+      login,
+      restaurant
    }
 });
