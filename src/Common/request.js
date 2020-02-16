@@ -2,7 +2,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import { parse,compile } from 'path-to-regexp';
-// import CustomError from './error';
+import CustomError from './error';
 import { get } from './utils';
 
 /* 30 sec timeout */
@@ -91,7 +91,6 @@ export default async function request (options) {
       return data;
    } catch (error) {
 
-      //   throw new CustomError(error);
-      throw error;
+      throw new CustomError(error);
    }
 }

@@ -70,6 +70,7 @@
       "congee": "Congee"
     },
     "error":{
-      "need-login":"Please log in first."
+      "need-login":"Please log in first.",
+      "user-duplicate":"Duplicate username"
     }
 }
