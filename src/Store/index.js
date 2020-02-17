@@ -9,6 +9,7 @@ import loading from './loading';
 /* modules */
 import login from '../Features/Login/module';
 import restaurant from '../Features/Restaurant/module';
+import menu from '../Features/Menu/module';
 
 Vue.use(Vuex);
 
@@ -24,6 +25,7 @@ export default new Vuex.Store({
       language,
       loading,
       login,
-      restaurant
+      restaurant,
+      menu
    }
 });

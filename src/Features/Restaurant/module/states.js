@@ -1,7 +1,8 @@
-// import { get } from '../../../Common/utils';
+import { get } from '../../../Common/utils';
 
 const state = {
-   restaurants:[]
+   restaurants:[],
+   restaurant:get('restaurant') || null
 };
 
 export default state;

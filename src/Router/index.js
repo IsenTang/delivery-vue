@@ -2,8 +2,11 @@ import Vue from 'vue';
 import _ from 'lodash';
 import VueRouter from 'vue-router';
 import { get } from '../Common/utils';
+
+/* pages */
 import Login from '../Features/Login/view.vue';
 import Restaurant from '../Features/Restaurant/view.vue';
+import Menu from '../Features/Menu/view.vue';
 
 Vue.use(VueRouter);
 
@@ -28,6 +31,12 @@ const routes = [
       path:'/restaurant',
       name:'Restaurant',
       component: Restaurant
+   },
+   {
+      path:'/menu/:restId',
+      name:'Menu',
+      component: Menu,
+      props: true
    }
 ];
 
