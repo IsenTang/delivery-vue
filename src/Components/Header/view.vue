@@ -4,8 +4,8 @@
       <div class="containerBetween vertical left">
         <img
           class="logo"
-
           src="@/Assets/logo.png"
+          @click="goRestaurant"
         />
       </div>
       <div class="profile">
@@ -60,6 +60,10 @@ export default {
       closeDropDown (){
 
          this.$data.show = false;
+      },
+      goRestaurant (){
+
+         this.$router.push('/restaurant');
       }
    }
 };
