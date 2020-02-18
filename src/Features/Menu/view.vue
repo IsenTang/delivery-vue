@@ -1,8 +1,10 @@
 <template>
   <div class="menu-box">
     <div class="titleText">
+      {{ name }}
     </div>
     <div class="subTitleText">
+      {{ tags }}
     </div>
 
     <div class="all-category-box">
@@ -15,6 +17,7 @@
     </div>
     <div class="menu-cart-container">
       <div class="menu-cart-content">
+        <Cart />
       </div>
     </div>
   </div>
@@ -24,16 +27,24 @@
 /* style */
 import './style.scss';
 
+/* components */
+import CategoryItem from './components/CategoryItem.vue';
+import Cart from './components/Cart';
+
 import { mapActions,mapState } from 'vuex';
 import uuidv4 from 'uuid/v4';
 import _ from 'lodash';
+import { getLanguageInfo,get,set } from '../../Common/utils';
 
-import CategoryItem from './components/CategoryItem.vue';
+import { renderTags } from '../Restaurant/public';
+
+import * as types from '../../Store/mutation-types';
 
 export default {
 
    components:{
-      CategoryItem
+      CategoryItem,
+      Cart
    },
 
    props:{
@@ -48,6 +59,18 @@ export default {
          language: state=>state.language.language,
          menu:state=>state.menu
       }),
+
+      /* 饭店名 */
+      name (){
+         const restaurant = get('restaurant');
+
+         return getLanguageInfo(restaurant,'name',this.language);
+      },
+
+      tags (){
+
+         return renderTags(get('restaurant'));
+      },
       /* 菜单渲染 */
       menuList (){
 
@@ -88,7 +111,17 @@ export default {
       }
    },
 
-   created (){
+   mounted (){
+
+      /* 进入新餐馆，删除购物车 */
+      const cartId = get('cartId');
+
+      if(cartId !== this.$props.restId){
+
+         set('cart',[]);
+
+         this.$store.commit(types.CLEAR_CART);
+      }
       this.loadMenu({ restaurantId:this.$props.restId });
    },
 

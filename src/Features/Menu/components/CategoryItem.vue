@@ -45,7 +45,8 @@ export default {
    computed:{
 
       ...mapState({
-         language: state=>state.language.language
+         language: state=>state.language.language,
+         cart:state=>state.cart.cart
       }),
 
       name (){

@@ -1,88 +1,326 @@
-@import '../../Styles/global.scss';
-@import '../../Styles/color.scss';
-@import '../../Styles/size.scss';
+@import '../../../Styles/color.scss';
 
-.menu-box{
-    position : relative;
-    margin-top : 65px;
-    margin-bottom : 50px;
-    margin-left : 100px;
-}
+$radius-value : 15px;
 
-.all-category-box{
-    width :100%;
-    max-width : 700px;
-    -moz-column-count :2; /* Firefox */
-    -webkit-column-count :2; /* Safari 和 Chrome */
-    column-count :2;
-    -moz-column-gap : 12%;
-    -webkit-column-gap : 12%;
-    column-gap : 12%;
-    margin-top : 69px;
-}
-
-.category-box{
-    -moz-page-break-inside : avoid;
-    -webkit-column-break-inside : avoid;
-    page-break-inside :avoid;
-    break-inside : avoid;
-    margin-bottom :(70px);
-}
-
-.menu-food-item{
-    position : relative;
-}
-
-.menu-count{
-    position : absolute;
-    top :30px;
-    left :-30px;
-    width :24px;
-    height : 24px;
-    background-color : #d8d8d8;
-    -moz-border-radius : 24px;
-    border-radius :24px;
-}
-
-.menu-count-text{
-    width :(24px);
-    font-family : PingFangSC-Regular;
-    font-size : 14px;
-    line-height : 24px;
-    color : #6e6e6e;
-    text-align : center;
-  }
-
-
-.menu-text{
-    width :100%;
-    max-width :140px;
-    height : auto;
-    margin-top : 30px;
-    font-family : PingFangSC-Regular;
-    font-size : 16px;
-    font-style : normal;
-    font-weight : normal;
-    font-stretch : normal;
-    line-height : 1.5;
-    color : $black;
-    letter-spacing : normal;
-}
-
-.menu-price{
-    height :24px;
-    margin-top : 30px;
+.cart-empty-text{
+    height : 16px;
+    margin-bottom : 16px;
     font-family : PingFangSC;
     font-size : 16px;
     font-style : normal;
     font-weight : normal;
     font-stretch : normal;
-    line-height : 1.5;
+    line-height : 16px;
+    color : $line-grey;
+    text-align : center;
+    letter-spacing : normal;
+}
+
+.cart-item{
+    margin-bottom : 23px;
+}
+
+.cart-item-name{
+    flex : 1;
+    font-size : 16px;
+    font-style : normal;
+    font-weight : normal;
+    font-stretch : normal;
+    line-height : 30px;
     color : $black;
     letter-spacing : normal;
+}
+
+.cart-item-price{
+    height : 30px;
+    margin-right : 5px;
+    font-size : 16px;
+    font-style : normal;
+    font-weight : normal;
+    font-stretch : normal;
+    line-height : 30px;
+    color : $black;
+    letter-spacing : normal;
+}
+
+.cart-item-count{
+    width : 24px;
+    height :30px;
+    font-family : PingFangSC-Regular;
+    line-height : 30px;
+    color :$white;
+    text-align : center;
+    background-color :$black
+}
+
+.cart-item-count-no-editable{
+    width :30px;
+    height : 30px;
+    font-size : 15px;
+    line-height : 2;
+    color : #6e6e6e;
+    text-align : center;
+    background-color : #d8d8d8;
+    -moz-border-radius : 30px;
+    border-radius :30px;
+}
+
+.cart-add-button{
+    width : 29px;
+    height :30px;
+    padding :0 0;
+    padding-left : 10px;
+    font-family : PingFangSC-Regular;
+    font-size : 14px;
+    line-height : 30px;
+    color :$white;
+    text-align : left;
+    background-color :$black;
+    border : 0;
+    border-top-left-radius : 0px;
+    border-top-right-radius : $radius-value;
+    border-bottom-right-radius : $radius-value;
+    border-bottom-left-radius : 0px;
+}
+
+.cart-remove-button{
+    float : right;
+    width : 29px;
+    height :30px;
+    padding :0 0;
+    font-family : PingFangSC-Regular;
+    font-size : 14px;
+    line-height : 30px;
+    color :$white;
+    background-color :$black;
+    border : 0;
+    border-top-left-radius : $radius-value;
+    border-top-right-radius : 0px;
+    border-bottom-right-radius : 0px;
+    border-bottom-left-radius : $radius-value
+}
+
+.menu-cart-subtotal-btn{
+    width : 100%;
+    height : 40px;
+    padding : 0 20px;
+    font-family : PingFangSC-Regular;
+    font-size : 16px;
+    line-height : 1.5;
+    color : $white;
     cursor : pointer;
+    background-color : $black;
+    border : 0;
+    border-radius : 25px;
+    transition : all 0.3s linear;
+
+    &:hover{
+        background : $dark-green;
+    }
+
+    &:disabled{
+        background : $line-grey;
+    }
+
+    &-expand{
+        background : $dark-green;
+    }
+}
+
+.menu-cart-total{
+    padding-top : 10px;
+    padding-bottom : 15px;
+    font-size : 24px;
+    line-height : 1.5;
+    color :$black;
+    border-top : 1px solid $line;
+}
+
+.cart-left{
+    width : 0;
+    padding : 0;
+    background : $backgroundColor;
+    border : 1px solid $backgroundColor;
+    border-right : 0;
+    box-shadow : 0 2px 8px 0 rgba(146, 146, 146, 0.5);
+    transition : width 0.3s linear;
+    &-expand {
+        width : 450px;
+        padding : 0 20px 0;
+        overflow-y : hidden;
+        border-right : 2px solid $line;
+        box-shadow : none;
+        transition : width 0.3s linear, padding 0.3s linear, opacity 0.3s cubic-bezier(.7,.07,1,-0.07);
+    }
+}
+
+/* cart style */
+.menu-cart{
+    &-container{
+        position : fixed;
+        right : 0;
+        bottom : 0;
+        left : 0;
+        display : flex;
+        justify-content : center;
+        margin : auto;
+    }
+
+    &-content{
+        position : absolute;
+        right :calc(((100vw - 1440px) / 2) + 120px);
+        bottom :calc((100vh - 670px) * 0.28);
+    }
+
+    &-main-container{
+        display : flex;
+        flex-direction : column;
+        justify-content : space-between;
+        width : 320px;
+        max-height : 670px;
+        padding : 15px 20px 20px 20px;
+        background : $backgroundColor;
+        border : 1px solid $backgroundColor;
+        box-shadow : 0 2px 8px 0 rgba(146, 146, 146, 0.5);
+        transition : all 0.3s linear;
+        > div:nth-child(1) {
+            display : flex;
+            flex-direction : column;
+            overflow-x : hidden;
+            overflow-y : auto;
+            -webkit-overflow-scrolling : touch;
+          }
+
+        &-expand{
+            width :320px;
+            height : 670px;
+            padding : 0px 20px 0px;
+            box-shadow : none;
+            // transition : all 0.3s linear;
+        }
+    }
+
+    &-closed{
+        display : flex;
+        flex-direction : column;
+        // justify-content : space-between;
+        padding :0;
+        margin-right : 10px;
+        background-color : transparent;
+        border : 0;
+    }
+
+    &-closed-btn{
+        max-width : 56.3px;
+        height : auto;
+    }
+
+}
+
+.container-expand{
+    padding : 15px 0px 20px;
+    background-color : $backgroundColor;
+    box-shadow : 0 2px 8px 0 rgba(146, 146, 146, 0.5);
+}
+
+/* payment */
+.payment-select {
+    &-container {
+      height : 30px;
+      color : $black;
+    }
+    &-logo {
+      width : auto;
+      height : 130%;
+      &[disabled] {
+        opacity : 0.25;
+      }
+    }
+    &-option {
+      border : 1px solid $line-grey;
+      border-radius : 25px;
+    }
+    &-addcard {
+      &-content {
+        position : absolute;
+  
+        position : static;
+        width : 100%;
+        height : 100%;
+        padding : 0;
+        overflow : auto;
+        background : transparent;
+        border-radius : 5px;
+        outline : none;
+  
+      }
+      &-root {
+        display : flex;
+        align-items : center;
+        justify-content : center;
+        width : 100%;
+        height : 100%;
+      }
+      &-container {
+        position : absolute;
+        position : absolute;
+        padding : 0;
+        overflow : auto;
+        background : transparent;
+        border-radius : 5px;
+        outline : none;
+      }
+      &-box {
+        display : flex;
+        flex-direction : row;
+      }
+      &-form {
+        width : 400px;
+        height : 170px;
+        background : $backgroundColor;
+        border-radius : 5px;
+      }
+    }
+    &-close {
+      display : flex;
+      flex-direction : column;
+      padding : 0;
+      margin-right : 10px;
+      cursor : pointer;
+      background : transparent;
+      border : 0;
+      img {
+        max-width :56.3px;
+        height : auto;
+      }
+    }
+}
+
+.not-visible {
+    height : 0 !important;
+    min-height : 0 !important;
+    padding : 0;
+    margin : 0 !important;
+    opacity : 0;
+    transition : opacity 0.3s cubic-bezier(0,1.01,.22,1.03); //贝塞尔曲线
+}
+
+.visible {
+    opacity : 1;
+    transition : opacity 0.3s cubic-bezier(.7,.07,1,-0.07);
+  }
+
+.menu-cart-payment-input{
+    width :320px;
+    height :30px;
+    margin : 15px 0 10px;
 }
 
 .no-available{
-    opacity: 0.2
+    opacity: 0.2;
+}
+
+.payment-select-logo{
+
+  height: 36px;
 }

@@ -1,6 +1,8 @@
 <template>
   <div class="containerBetween vertical cart-item">
-    <div class="cart-item-name"></div>
+    <div class="cart-item-name">
+      {{ name }}
+    </div>
 
     <div class="containerRow">
       <!-- 价格 -->
@@ -14,19 +16,21 @@
       <button
         v-if="editable"
         class="cart-remove-button"
+        @click="removeFood"
       >
         -
       </button>
 
       <!-- 数量 -->
-      <div :class="{ 'cart-item-count' :'editable', 'cart-item-count-no-editable':'!editable' }">
+      <div :class="{ 'cart-item-count' :'editable', 'cart-item-count-no-editable':!editable }">
         {{ count }}
       </div>
 
       <!-- 加号 -->
       <button
         v-if="editable"
-        className="cart-add-button"
+        class="cart-add-button"
+        @click="addFood"
       >
         +
       </button>
@@ -38,7 +42,9 @@
 /* style */
 import './style.scss';
 
-import { formatPrice } from '../../../Common/utils';
+import _ from 'lodash';
+import { mapActions,mapState } from 'vuex';
+import { formatPrice,getLanguageInfo } from '../../../Common/utils';
 
 export default {
    props:{
@@ -58,7 +64,15 @@ export default {
       }
    },
    computed:{
+      ...mapState({
+         language: state=>state.language.language
+      }),
 
+      /* 名字 */
+      name (){
+
+         return getLanguageInfo(this.items[0],'name',this.language);
+      },
       /* 价格 */
       price (){
          let totalPrice = 0;
@@ -83,6 +97,22 @@ export default {
       count (){
 
          return this.$props.items.length;
+      }
+   },
+   methods:{
+      ...mapActions([
+         'addCart',
+         'removeCart'
+      ]),
+
+      addFood (){
+
+         this.addCart({ food: this.$props.items[0] });
+      },
+
+      removeFood (){
+
+         this.removeCart({ food: this.$props.items[0] });
       }
    }
 };
