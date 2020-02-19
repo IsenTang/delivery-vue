@@ -96,6 +96,7 @@
           <button
             class="menu-cart-subtotal-btn"
             :class="{ 'menu-cart-subtotal-btn-expand':isExpand }"
+            :disabled="cart.length === 0 "
             @click="placeOrder()"
           >
             {{ $t('menu.place-order') }}
@@ -161,7 +162,7 @@ export default {
       price (){
 
          return formatPrice(getTotal(this.cart));
-      }
+      },
    },
    methods:{
 
