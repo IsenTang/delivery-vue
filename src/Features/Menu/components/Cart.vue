@@ -96,7 +96,7 @@
           <button
             class="menu-cart-subtotal-btn"
             :class="{ 'menu-cart-subtotal-btn-expand':isExpand }"
-            @click="expand"
+            @click="placeOrder()"
           >
             {{ $t('menu.place-order') }}
           </button>
@@ -111,7 +111,7 @@
 import 'vue-select/dist/vue-select.css';
 import './style.scss';
 
-import { mapState } from 'vuex';
+import { mapState,mapActions } from 'vuex';
 import _ from 'lodash';
 
 /* components */
@@ -164,9 +164,24 @@ export default {
       }
    },
    methods:{
+
+      ...mapActions([
+         'checkout'
+      ]),
+
       expand (){
 
          this.$data.isExpand = !this.$data.isExpand;
+      },
+
+      placeOrder (){
+
+         if(!this.$data.isExpand){
+            this.$data.isExpand = true;
+         }else{
+            this.checkout();
+         }
+
       },
 
       setPayment (e){

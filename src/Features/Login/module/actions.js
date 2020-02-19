@@ -53,6 +53,13 @@ const actions = {
          commit(types.HIDE_LOADING);
       }
 
+   },
+
+   logout ({ commit }){
+
+      set('user',null);
+
+      commit(types.CLEAR_USER);
    }
 };
 

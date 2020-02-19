@@ -8,6 +8,9 @@
     </div>
 
     <div class="all-category-box">
+      <div v-if="menuList.length === 0 ">
+        {{ $t('menu.no-menu') }}
+      </div>
       <CategoryItem
         v-for="item in menuList"
         :key="item.key"

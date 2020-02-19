@@ -31,6 +31,7 @@
       v-if="logoutShow"
       class="profile-button log-out"
       type="button"
+      @click="handleLogout"
     >
       {{ $t('logout') }}
     </button>
@@ -40,7 +41,7 @@
 <script>
 import _ from 'lodash';
 import uuidv4 from 'uuid/v4';
-import { mapState } from 'vuex';
+import { mapState,mapActions } from 'vuex';
 
 /* components */
 import LanguageButton from './LanguageButton.vue';
@@ -101,6 +102,9 @@ export default {
 
    methods:{
 
+      ...mapActions([
+         'logout'
+      ]),
       handleClickOutside (e){
 
          const ref = this.$refs['profile-dropDown'];
@@ -112,6 +116,11 @@ export default {
             this.$props['close']();
          }
 
+      },
+
+      handleLogout (){
+
+         this.logout();
       }
    },
 

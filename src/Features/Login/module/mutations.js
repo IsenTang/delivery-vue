@@ -6,6 +6,11 @@ const mutations = {
    [types.SAVE_USER] (state,payload){
       state.user = payload.user;
    },
+
+   /* 清除用户 */
+   [types.CLEAR_USER] (state){
+      state.user = null;
+   },
 };
 
 export default mutations;
