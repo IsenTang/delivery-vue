@@ -12,6 +12,10 @@ Vue.use(VueRouter);
 
 const routes = [
    {
+      path:'/',
+      redirect:'/restaurant',
+   },
+   {
       path: '/login',
       name: 'Login',
       component: Login,
@@ -41,7 +45,15 @@ const routes = [
 ];
 
 const router = new VueRouter({
-   routes
+   routes,
+   /* 新页面滚动到头部 */
+   scrollBehavior (to, from, savedPosition) {
+      if (savedPosition) {
+         return savedPosition;
+      } else {
+         return { x: 0, y: 0 };
+      }
+   }
 });
 
 /* 登录态检测 */
