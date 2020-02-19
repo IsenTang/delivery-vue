@@ -7,6 +7,7 @@ import { get } from '../Common/utils';
 import Login from '../Features/Login/view.vue';
 import Restaurant from '../Features/Restaurant/view.vue';
 import Menu from '../Features/Menu/view.vue';
+import Order from '../Features/Order/view.vue';
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,11 @@ const routes = [
       name:'Menu',
       component: Menu,
       props: true
+   },
+   {
+      path:'/order',
+      name:'Order',
+      component: Order
    }
 ];
 

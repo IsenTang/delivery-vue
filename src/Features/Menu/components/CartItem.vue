@@ -9,8 +9,9 @@
       <div
         v-if="expand"
         class="cart-item-price"
-      ></div>
-      {{ price }}
+      >
+        {{ price }}
+      </div>
 
       <!-- 减号 -->
       <button

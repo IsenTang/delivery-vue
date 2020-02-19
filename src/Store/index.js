@@ -10,6 +10,7 @@ import loading from './loading';
 import login from '../Features/Login/module';
 import restaurant from '../Features/Restaurant/module';
 import menu from '../Features/Menu/module';
+import order from '../Features/Order/module';
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
       loading,
       login,
       restaurant,
-      menu
+      menu,
+      order
    }
 });
