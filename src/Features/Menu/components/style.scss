@@ -189,7 +189,9 @@ $radius-value : 15px;
             overflow-x : hidden;
             overflow-y : auto;
             -webkit-overflow-scrolling : touch;
+            
           }
+        > div:nth-child(1)::-webkit-scrollbar { width : 0 !important }
 
         &-expand{
             width :320px;

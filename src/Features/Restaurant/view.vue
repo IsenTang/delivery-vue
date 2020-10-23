@@ -87,9 +87,7 @@ export default {
 
          let rests = _.cloneDeep(restaurants);
 
-         rests = _.sortBy(restaurants, [ 'featured', true ]);
-
-         rests = _.sortBy(restaurants, 'zscode');
+         rests = _.orderBy(restaurants, [ 'featured','zscore' ],[ 'desc','desc' ]);
 
          _.forEach(rests, (item) => {
 
