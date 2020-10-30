@@ -3,14 +3,14 @@
 @import '../../Styles/size.scss';
 
 .all-rest-box{
-    width :100%;
-    -moz-column-count :2; /* Firefox */
-    -webkit-column-count :2; /* Safari 和 Chrome */
-    column-count :2;
     -moz-column-gap : 20px;
     -webkit-column-gap : 20px;
     column-gap : 20px;
+    width :100%;
     margin-left : 100px;
+    -moz-column-count :2; /* Firefox */
+    -webkit-column-count :2; /* Safari 和 Chrome */
+    column-count :2;
 }
 
 .rest-tab{
