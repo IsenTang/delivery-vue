@@ -15,6 +15,7 @@
       v-if="orderShow"
       class="order-btn"
       type="button"
+      @click="toOrder"
     >
       {{ $t('order.title') }}
     </button>
@@ -75,6 +76,7 @@ export default {
       },
       orderShow (){
 
+         console.log('order-show');
          const path = this.$router.currentRoute.path;
 
          return !_.isEmpty(this.user) && (path !== '/order');
@@ -116,6 +118,9 @@ export default {
             this.$props['close']();
          }
 
+      },
+      toOrder (){
+         this.$router.push('/order');
       },
 
       handleLogout (){
