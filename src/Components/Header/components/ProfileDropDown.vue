@@ -7,6 +7,7 @@
       v-if="loginShow"
       class="profile-button"
       type="button"
+      @click="toLogin"
     >
       {{ $t('login.login') }}
     </button>
@@ -76,7 +77,6 @@ export default {
       },
       orderShow (){
 
-         console.log('order-show');
          const path = this.$router.currentRoute.path;
 
          return !_.isEmpty(this.user) && (path !== '/order');
@@ -91,7 +91,7 @@ export default {
    },
 
    mounted (){
-
+      console.log('mounted');
       /* 增加listener，点击关闭 */
       document.addEventListener('mousedown', this.handleClickOutside,true);
    },
@@ -121,6 +121,11 @@ export default {
       },
       toOrder (){
          this.$router.push('/order');
+      },
+
+      toLogin (){
+
+         this.$router.push('/login');
       },
 
       handleLogout (){

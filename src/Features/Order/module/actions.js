@@ -17,6 +17,7 @@ const actions = {
 
          const orders = await loadOrder(userId);
 
+         console.log('orders ===>',orders);
          commit(types.LOAD_ORDER,{ orders:orders.list });
 
       } catch (error) {

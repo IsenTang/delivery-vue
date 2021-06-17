@@ -48,7 +48,7 @@
                   />
                 </template>
 
-                <template
+                <!-- <template
                   slot="option"
                   slot-scope="option"
                 >
@@ -56,7 +56,7 @@
                     :src="option.img"
                     class="payment-select-logo"
                   />
-                </template>
+                </template> -->
               </v-select>
             </div>
           </div>
@@ -202,6 +202,6 @@ export default {
 <style scoped>
 
 .style-chooser .vs__dropdown-menu {
-    background: #e8e8e8;
+    background : #e8e8e8;
 }
 </style>

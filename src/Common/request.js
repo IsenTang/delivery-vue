@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-catch */
 import axios from 'axios';
 import _ from 'lodash';
-import { parse,compile } from 'path-to-regexp';
 import CustomError from './error';
 import { get } from './utils';
 
@@ -29,34 +28,6 @@ const fetch = (options) => {
 
    /* Clone request body data */
    const cloneData = _.cloneDeep(data);
-
-   try {
-      let domin = '';
-
-      if (url.match(/[a-zA-z]+:\/\/[^/]*/)) {
-         const { 0: val } = url.match(/[a-zA-z]+:\/\/[^/]*/);
-
-         domin = val;
-         url = url.slice(domin.length);
-      }
-
-      const match = parse(url);
-
-      url = compile(url)(data);
-
-      _.forEach(match, item => {
-
-         if (item instanceof Object && item.name in cloneData) {
-            delete cloneData[item.name];
-         }
-      });
-      url = domin + url;
-
-   } catch (e) {
-
-      console.log(e);
-      _.noop();
-   }
 
    switch (_.toLower(method)) {
    case 'get':

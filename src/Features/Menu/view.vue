@@ -6,7 +6,6 @@
     <div class="subTitleText">
       {{ tags }}
     </div>
-
     <div class="all-category-box">
       <div v-if="menuList.length === 0 ">
         {{ $t('menu.no-menu') }}
@@ -115,7 +114,7 @@ export default {
    },
 
    mounted (){
-
+      console.log(this.$router);
       /* 进入新餐馆，删除购物车 */
       const cartId = get('cartId');
 

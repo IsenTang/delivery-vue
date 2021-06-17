@@ -50,6 +50,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+   mode:'history',
    routes,
    /* 新页面滚动到头部 */
    scrollBehavior (to, from, savedPosition) {
