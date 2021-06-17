@@ -9,7 +9,7 @@ export function getTotal (cart){
 
       _.forEach(cart, (item) => {
 
-         price += _.get(item, 'totalPrice', 0);
+         price += _.get(item, 'price', 0);
       });
    }
 
