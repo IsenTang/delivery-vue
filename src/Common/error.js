@@ -22,7 +22,6 @@ export default function CustomError (err) {
 
    /* Decide error message to show */
    /* First find translation */
-
    const trans = i18n.t(`error.${this.code}`);
 
    /* if translate exist, use it as error message */
