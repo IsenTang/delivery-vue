@@ -53,12 +53,19 @@ const router = new VueRouter({
    mode:'history',
    routes,
    /* 新页面滚动到头部 */
-   scrollBehavior (to, from, savedPosition) {
-      if (savedPosition) {
-         return savedPosition;
-      } else {
-         return { x: 0, y: 0 };
-      }
+   scrollBehavior () {
+      // if (savedPosition) {
+      //    return savedPosition;
+      // } else {
+
+      // return { x: 0, y: 0 };
+
+      return new Promise((resolve) => {
+         setTimeout(() => {
+            resolve({ x: 0, y: 0 });
+         }, 500);
+      });
+      // }
    }
 });
 
